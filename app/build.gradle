@@ -22,7 +22,7 @@ android {
         }
         python {
             pip {
-                install "matplotlib"
+                //install "library"
             }
         }
     }
