@@ -4,7 +4,7 @@ package com.chaquo.myapplication
 //import android.graphics.BitmapFactory
 import android.os.Bundle
 //import android.view.inputmethod.InputMethodManager
-import android.widget.Button
+//import android.widget.Button
 //import android.widget.EditText
 //import android.widget.ImageView
 //import android.widget.Toast
@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         }
         // ===== For debugging only =====
         val py = Python.getInstance()
+        val module = py.getModule("test_hello")
+        val result = module.callAttr("say_hello", "admin")
+        Log.d("PythonTest", result.toString())
         // ===== For debugging only =====
 
         // ===== DEPRECATED, ORIGINALLY FROM EXAMPLE CODE =====
@@ -46,13 +49,7 @@ class MainActivity : AppCompatActivity() {
         //}
         // ===== DEPRECATED, ORIGINALLY FROM EXAMPLE CODE =====
 
-        findViewById<Button>(R.id.button).setOnClickListener{
-            // ===== For debugging only =====
-            val module = py.getModule("test_hello")
-            val result = module.callAttr("say_hello", "admin")
-            Log.d("PythonTest", result.toString())
-            // ===== For debugging only =====
-        }
+
 
     }
 }

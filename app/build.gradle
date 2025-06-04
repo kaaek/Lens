@@ -18,11 +18,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64" // Can cut the first option, to focus on newer Android versions.
+        }
+        python {
+            version "3.8"
+        }
+        python {
+            buildPython "C:/Users/USER/.pyenv/pyenv-win/versions/3.8.10/python.exe"
         }
         python {
             pip {
-                //install "library"
+                install "opencv-python"
+                //install "face_recognition"
             }
         }
     }
@@ -34,8 +41,10 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        //sourceCompatibility JavaVersion.VERSION_1_8 <-- Deprecated to allow OpenCV to run.
+        //targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17 // Changed for OpenCV to run.
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -47,6 +56,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(':opencv')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
