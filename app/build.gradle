@@ -29,7 +29,10 @@ android {
         python {
             pip {
                 install "opencv-python"
-                //install "face_recognition"
+                install "pickle"
+                install "time"
+                install "numpy"
+                install "face_recognition"
             }
         }
     }
